@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-utensils"></i> Recipe Dashboard</h1>
+            <div class="controls">
+                <div class="pagination-controls">
+                    <label for="limit">Results per page:</label>
+                    <select id="limit">
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                        <option value="30">30</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <!-- Search Filters -->
+        <div class="filters">
+            <div class="filter-group">
+                <input type="text" id="titleFilter" placeholder="Search by title...">
+            </div>
+            <div class="filter-group">
+                <input type="text" id="cuisineFilter" placeholder="Filter by cuisine...">
+            </div>
+            <div class="filter-group">
+                <input type="text" id="ratingFilter" placeholder="Rating (e.g., >=4.5)">
+            </div>
+            <div class="filter-group">
+                <input type="text" id="caloriesFilter" placeholder="Calories (e.g., <=400)">
+            </div>
+            <div class="filter-group">
+                <input type="text" id="timeFilter" placeholder="Total time (e.g., <=60)">
+            </div>
+            <button id="searchBtn" class="btn-primary">
+                <i class="fas fa-search"></i> Search
+            </button>
+            <button id="clearBtn" class="btn-secondary">
+                <i class="fas fa-times"></i> Clear
+            </button>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loading" class="loading hidden">
+            <i class="fas fa-spinner fa-spin"></i> Loading recipes...
+        </div>
+
+        <!-- No Data Message -->
+        <div id="noData" class="no-data hidden">
+            <i class="fas fa-info-circle"></i>
+            <h3>No recipes found</h3>
+            <p>Try adjusting your search filters or clear them to see all recipes.</p>
+        </div>
+
+        <!-- Recipes Table -->
+        <div class="table-container">
+            <table id="recipesTable" class="recipes-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Cuisine</th>
+                        <th>Rating</th>
+                        <th>Total Time (min)</th>
+                        <th>Serves</th>
+                    </tr>
+                </thead>
+                <tbody id="recipesTableBody">
+                    <!-- Recipes will be populated here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button id="prevBtn" class="btn-pagination">
+                <i class="fas fa-chevron-left"></i> Previous
+            </button>
+            <span id="pageInfo" class="page-info">Page 1 of 1</span>
+            <button id="nextBtn" class="btn-pagination">
+                Next <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Recipe Detail Drawer -->
+    <div id="recipeDrawer" class="drawer">
+        <div class="drawer-content">
+            <div class="drawer-header">
+                <h2 id="drawerTitle"></h2>
+                <span id="drawerCuisine" class="cuisine-badge"></span>
+                <button id="closeDrawer" class="close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="drawer-body">
+                <div class="recipe-section">
+                    <h3>Description</h3>
+                    <p id="drawerDescription"></p>
+                </div>
+                
+                <div class="recipe-section">
+                    <h3>Time Information</h3>
+                    <div class="time-info">
+                        <div class="time-item">
+                            <strong>Total Time:</strong>
+                            <span id="drawerTotalTime"></span>
+                            <button id="expandTime" class="expand-btn">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div id="timeDetails" class="time-details hidden">
+                            <div class="time-item">
+                                <strong>Prep Time:</strong>
+                                <span id="drawerPrepTime"></span>
+                            </div>
+                            <div class="time-item">
+                                <strong>Cook Time:</strong>
+                                <span id="drawerCookTime"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recipe-section">
+                    <h3>Nutrition Information</h3>
+                    <table class="nutrition-table">
+                        <tbody id="nutritionTableBody">
+                            <!-- Nutrition data will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="recipe-section">
+                    <h3>Ingredients</h3>
+                    <ul id="drawerIngredients" class="ingredients-list">
+                        <!-- Ingredients will be populated here -->
+                    </ul>
+                </div>
+
+                <div class="recipe-section">
+                    <h3>Instructions</h3>
+                    <ol id="drawerInstructions" class="instructions-list">
+                        <!-- Instructions will be populated here -->
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

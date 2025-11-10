@@ -1,0 +1,368 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.header h1 {
+    color: #2c3e50;
+    font-size: 2rem;
+}
+
+.header h1 i {
+    margin-right: 10px;
+    color: #e74c3c;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.pagination-controls label {
+    margin-right: 8px;
+    font-weight: 500;
+}
+
+.pagination-controls select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+}
+
+/* Filters */
+.filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.filter-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.btn-primary, .btn-secondary, .btn-pagination {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+}
+
+.btn-pagination {
+    background-color: #34495e;
+    color: white;
+}
+
+.btn-pagination:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+/* Table */
+.table-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.recipes-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.recipes-table th,
+.recipes-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.recipes-table th {
+    background-color: #34495e;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+}
+
+.recipes-table th:hover {
+    background-color: #2c3e50;
+}
+
+.recipes-table tbody tr {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.recipes-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Star Rating */
+.star-rating {
+    color: #f39c12;
+    font-size: 14px;
+}
+
+.star-rating .far {
+    color: #bdc3c7;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.page-info {
+    font-weight: 500;
+    color: #7f8c8d;
+}
+
+/* Drawer */
+.drawer {
+    position: fixed;
+    top: 0;
+    right: -600px;
+    width: 600px;
+    height: 100vh;
+    background: white;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.drawer.open {
+    right: 0;
+}
+
+.drawer-content {
+    padding: 0;
+}
+
+.drawer-header {
+    background: #34495e;
+    color: white;
+    padding: 20px;
+    position: relative;
+}
+
+.drawer-header h2 {
+    margin-right: 60px;
+    font-size: 1.5rem;
+}
+
+.cuisine-badge {
+    background: #e74c3c;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.drawer-body {
+    padding: 20px;
+}
+
+.recipe-section {
+    margin-bottom: 30px;
+}
+
+.recipe-section h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+.time-info {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.time-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.expand-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #3498db;
+    font-size: 12px;
+}
+
+.time-details {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+/* Nutrition Table */
+.nutrition-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.nutrition-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.nutrition-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Lists */
+.ingredients-list, .instructions-list {
+    margin-left: 20px;
+}
+
+.ingredients-list li, .instructions-list li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* Loading and No Data States */
+.loading, .no-data {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.loading i {
+    font-size: 2rem;
+    color: #3498db;
+    margin-bottom: 10px;
+}
+
+.no-data i {
+    font-size: 3rem;
+    color: #bdc3c7;
+    margin-bottom: 15px;
+}
+
+.no-data h3 {
+    color: #7f8c8d;
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .filters {
+        grid-template-columns: 1fr;
+    }
+    
+    .drawer {
+        width: 100%;
+        right: -100%;
+    }
+    
+    .recipes-table {
+        font-size: 14px;
+    }
+    
+    .recipes-table th,
+    .recipes-table td {
+        padding: 8px 4px;
+    }
+}
+
+/* Truncate long titles */
+.title-cell {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
